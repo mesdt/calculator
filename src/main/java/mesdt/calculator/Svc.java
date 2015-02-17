@@ -6,4 +6,6 @@ public interface Svc {
 
 	EvalResponse eval(String x, boolean save);
 
+	void set(String x, Object answer);
+
 }

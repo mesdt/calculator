@@ -33,4 +33,8 @@ public class SpelSvc implements Svc {
 		}
 	}
 
+	public void set(String x, Object answer) {
+		cache.put(x, answer);
+	}
+
 }
