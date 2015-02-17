@@ -9,16 +9,18 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CalculatorService {
+public class SpelSvc implements Svc {
 
 	private final Map<String, Object> cache = Collections.synchronizedMap(new HashMap<>());
 
 	private final ExpressionParser expressionParser = new SpelExpressionParser();
 
+	@Override
 	public Object getCache() {
 		return Collections.unmodifiableMap(cache);
 	}
 
+	@Override
 	public EvalResponse eval(String x, boolean save) {
 		if (cache.containsKey(x)) {
 			return new EvalResponse(cache.get(x), true);

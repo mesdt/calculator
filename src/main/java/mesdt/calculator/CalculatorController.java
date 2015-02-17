@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class CalculatorController {
 
 	@Autowired
-	private CalculatorService calculatorService;
+	private Svc svc;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/", params = { "!x" })
 	public Object index() {
-		return calculatorService.getCache();
+		return svc.getCache();
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/")
 	public EvalResponse eval(@RequestParam String x, @RequestParam(required = false) String save) {
-		return calculatorService.eval(x, save != null);
+		return svc.eval(x, save != null);
 	}
 
 }
