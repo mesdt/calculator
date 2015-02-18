@@ -1,6 +1,6 @@
 package mesdt.calculator;
 
-public interface Svc {
+public interface CalculatorService {
 
 	Object getCache();
 

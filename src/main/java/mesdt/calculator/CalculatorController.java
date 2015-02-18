@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Controller {
+public class CalculatorController {
 
 	@Autowired
-	private Svc svc;
+	private CalculatorService calculator;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/", params = { "!x" })
 	public Object index() {
-		return svc.getCache();
+		return calculator.getCache();
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/")
 	public EvalResponse eval(@RequestParam String x, @RequestParam(required = false) String save) {
-		return svc.eval(x, save != null);
+		return calculator.eval(x, save != null);
 	}
 
 }

@@ -9,7 +9,7 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SpelSvc implements Svc {
+public class SpelCalculatorService implements CalculatorService {
 
 	private final Map<String, Object> cache = Collections.synchronizedMap(new HashMap<>());
 
