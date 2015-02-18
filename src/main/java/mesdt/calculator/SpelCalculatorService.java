@@ -33,6 +33,7 @@ public class SpelCalculatorService implements CalculatorService {
 		}
 	}
 
+	@Override
 	public void set(String x, Object answer) {
 		cache.put(x, answer);
 	}
