@@ -13,11 +13,13 @@ public class SpelCalculatorService implements CalculatorService {
 
 	private final Map<String, Object> cache = Collections.synchronizedMap(new HashMap<>());
 
+	private final Map<String, Object> immutableCacheView = Collections.unmodifiableMap(cache);
+
 	private final ExpressionParser expressionParser = new SpelExpressionParser();
 
 	@Override
 	public Object getCache() {
-		return Collections.unmodifiableMap(cache);
+		return immutableCacheView;
 	}
 
 	@Override
