@@ -1,5 +1,7 @@
 package mesdt.calculator;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,16 +14,6 @@ public class CalculatorController {
 	@Autowired
 	private CalculatorService calculator;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/hi")
-	public Object hi() {
-		return "Hi there,";
-	}
-
-	@RequestMapping(method = RequestMethod.GET, value = "/null")
-	public Object nul() {
-		return null;
-	}
-
 	@RequestMapping(method = RequestMethod.GET, value = "/", params = { "!x" })
 	public Object index() {
 		return calculator.getCache();
@@ -33,8 +25,22 @@ public class CalculatorController {
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/**")
-	public Object set(@RequestParam String answer) {
-		return "answer=" + answer;
+	public Object set(@RequestParam Object answer, HttpServletRequest req) {
+		String x = req.getServletPath().substring(1);
+		calculator.set(x, answer);
+		return calculator.eval(x, false);
+	}
+
+	// Дальше эксперименты
+
+	@RequestMapping(method = RequestMethod.GET, value = "/hi")
+	public Object hi() {
+		return "Hi there,";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/null")
+	public Object nul() {
+		return null;
 	}
 
 }
