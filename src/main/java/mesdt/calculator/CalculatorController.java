@@ -19,6 +19,12 @@ public class CalculatorController {
 		return calculator.getCache();
 	}
 
+	@RequestMapping(method = RequestMethod.DELETE, value = "/")
+	public Object clearCache() {
+		calculator.clearCache();
+		return index();
+	}
+
 	@RequestMapping(method = RequestMethod.GET, value = "/")
 	public EvalResponse eval(@RequestParam String x, @RequestParam(required = false) String save) {
 		return calculator.eval(x, save != null);

@@ -8,4 +8,6 @@ public interface CalculatorService {
 
 	void set(String x, Object answer);
 
+	void clearCache();
+
 }

@@ -40,4 +40,9 @@ public class SpelCalculatorService implements CalculatorService {
 		cache.put(x, answer);
 	}
 
+	@Override
+	public void clearCache() {
+		cache.clear();
+	}
+
 }
