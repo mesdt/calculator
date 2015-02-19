@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SpelCalculatorService implements CalculatorService {
 
-	private final Map<String, Object> cache = Collections.synchronizedMap(new HashMap<>());
+	private final Map<String, Object> cache = new HashMap<>();
 
 	private final Map<String, Object> immutableCacheView = Collections.unmodifiableMap(cache);
 
